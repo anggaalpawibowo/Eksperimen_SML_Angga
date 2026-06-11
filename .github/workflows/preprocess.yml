@@ -1,0 +1,50 @@
+name: Automated Data Preprocessing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  preprocess-data:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Mengunduh kode dari repositori ke server GitHub Actions
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    # 2. Menyiapkan lingkungan Python versi 3.10
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    # 3. Menginstal pustaka yang dibutuhkan pipa data Anda
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas numpy scikit-learn
+
+    # 4. Mengeksekusi skrip otomatisasi Anda
+    - name: Run Preprocessing Script
+      run: |
+        python automate_Nama-siswa.py
+
+    # 5. Menyimpan dan melakukan push balik dataset steril ke repositori (Syarat Utama Advance)
+    - name: Commit and Push Cleaned Data
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        
+        # Memeriksa apakah ada perubahan file di folder preprocessing
+        if [ -n "$(git status --porcelain namadataset_preprocessing/)" ]; then
+          git add namadataset_preprocessing/cleaned_customer_churn.csv
+          git commit -m "Automated update: cleaned dataset via GitHub Actions [skip ci]"
+          git push
+        else
+          echo "Tidak ada perubahan pada dataset."
+        fi
