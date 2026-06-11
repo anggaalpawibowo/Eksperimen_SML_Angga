@@ -72,9 +72,9 @@ def main():
     print("=== Memulai Pipa Otomatisasi Preprocessing Data ===")
     
     # Menentukan folder input dan output sesuai standarisasi Dicoding
-    raw_data_dir = "namadataset_raw"                         
+    raw_data_dir = "customerchurn_raw"                         
     processed_data_dir = "namadataset_preprocessing"         
-    input_file_name = "customer_churn_dataset-training-master.csv"                    
+    input_file_name = "customerchurn_raw/customer_churn_dataset-training-master.csv"                    
     
     input_path = os.path.join(raw_data_dir, input_file_name)
     output_path = os.path.join(processed_data_dir, "cleaned_customer_churn.csv")
