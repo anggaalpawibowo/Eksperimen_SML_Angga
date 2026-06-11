@@ -32,7 +32,7 @@ jobs:
     # 4. Mengeksekusi skrip otomatisasi Anda
     - name: Run Preprocessing Script
       run: |
-        python automate_Nama-siswa.py
+        python automate_angga.py
 
     # 5. Menyimpan dan melakukan push balik dataset steril ke repositori (Syarat Utama Advance)
     - name: Commit and Push Cleaned Data
