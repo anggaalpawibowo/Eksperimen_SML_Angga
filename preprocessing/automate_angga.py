@@ -73,7 +73,7 @@ def main():
     
     # Menentukan folder input dan output sesuai standarisasi Dicoding
     raw_data_dir = "customerchurn_raw"                         
-    processed_data_dir = "namadataset_preprocessing"         
+    processed_data_dir = "preprocessing"         
     input_file_name = "customer_churn_dataset-training-master.csv"                    
     
     input_path = os.path.join(raw_data_dir, input_file_name)
